@@ -1,0 +1,6 @@
+{
+  "appId": "com.notbokheh.app",
+  "appName": "نطبخ إيه؟",
+  "webDir": "www",
+  "android": { "backgroundColor": "#0e0f11" }
+}

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#18a77f">
+  <meta name="color-scheme" content="light dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="author" content="NotbokhEh">
+  <meta name="copyright" content="© 2026 NotbokhEh. جميع الحقوق محفوظة.">
+  <meta name="description" content="نطبخ إيه؟ خطتك الشهرية للأكل المصري وقائمة مشترياتك في مكان واحد.">
+  <title>نطبخ إيه؟ | NotbokhEh</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <!-- الخط بيتحمّل بدون ما يوقف ظهور الصفحة: لو الدومين محجوب أو DNS بطيء التطبيق يفتح بخط النظام -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // تطبيق الثيم قبل الرسم لتفادي الوميض
+    try { var t = JSON.parse(localStorage.getItem("notbokhEh_state_v2") || "{}").theme; if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- مكتبة الأيقونات -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2.2l2.6 12.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L22 7H5.2"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.3-4.3"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 10-12h-8z" fill="currentColor"/></symbol>
+      <symbol id="i-basket" viewBox="0 0 24 24"><path d="M2 10h20l-2 10a2 2 0 0 1-2 1.6H6A2 2 0 0 1 4 20z"/><path d="m7 10 4-7M17 10l-4-7M9 14v4M15 14v4"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.500 20.500 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.500-1.200 6.200-2.700a1.200 1.200 0 0 1 1.500 0C14.500 3.800 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.700 9.700 0 0 1 6.700 2.700L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.700 9.700 0 0 1-6.700-2.700L3 16"/><path d="M8 16H3v5"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.500-1.500 3-3.200 3-5.500A5.500 5.500 0 0 0 16.500 3c-1.800 0-3 .5-4.500 2-1.500-1.500-2.700-2-4.500-2A5.500 5.500 0 0 0 2 8.500c0 2.300 1.500 4 3 5.500l7 7z"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.600 13.500 6.800 4M15.400 6.500l-6.800 4"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-chef" viewBox="0 0 24 24"><path d="M17 21a1 1 0 0 0 1-1v-5.300c0-.500.300-.800.700-1a4 4 0 0 0-2.100-7.600 5 5 0 0 0-9.200 0A4 4 0 0 0 5.300 13.700c.400.200.700.600.700 1V20a1 1 0 0 0 1 1z"/><path d="M6 17h12"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800zM19 16l.8 2.200L22 19l-2.200.8L19 22l-.8-2.200L16 19l2.200-.8z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24"><path d="M7 4 3 8l4 4M3 8h14M17 12l4 4-4 4M21 16H7"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app" id="app">
+
+    <!-- ===== الرئيسية ===== -->
+    <section id="tab-home" class="screen" aria-labelledby="homeTitle">
+      <header class="card header-card">
+        <div class="hc-row">
+          <button class="pill-btn" data-go="more" aria-label="الإعدادات"><span class="pb-ico"><svg class="ic"><use href="#i-user"/></svg></span>الإعدادات</button>
+          <div class="hc-title">
+            <h1 id="homeTitle">نطبخ إيه؟</h1>
+            <div class="badges"><span class="badge b-green">مطبخ مصري</span><span class="badge b-amber"><svg class="ic sm"><use href="#i-sparkle"/></svg>خطة شهرية</span></div>
+            <p class="sub">مخطط الأكل ومشتريات البيت</p>
+          </div>
+          <img class="logo-tile" src="icons/logo-mark.png" alt="" width="62" height="62">
+        </div>
+        <div class="hc-row hc-tools">
+          <span id="healthPill" class="pill health warn"><i class="dot"></i><span>تقدم الشهر: <b id="healthPct">٠٪</b></span></span>
+          <div class="tools">
+            <button id="themeBtn" class="round-btn" aria-label="تبديل الوضع الداكن"><svg class="ic"><use id="themeIcon" href="#i-moon"/></svg></button>
+            <button id="searchBtn" class="round-btn" aria-label="بحث في الأكلات"><svg class="ic"><use href="#i-search"/></svg></button>
+          </div>
+        </div>
+      </header>
+
+      <button id="bannerToday" class="banner" type="button">
+        <span class="banner-ico"><svg class="ic"><use href="#i-bolt"/></svg></span>
+        <span class="banner-body">
+          <strong>أكلة النهارده</strong>
+          <small id="bannerSub">…</small>
+        </span>
+        <span class="banner-tag" id="bannerTag">اضغط للوصفة</span>
+        <span class="banner-go"><svg class="ic"><use href="#i-chev"/></svg></span>
+      </button>
+
+      <button id="darkShop" class="dark-card" type="button" data-go="shop">
+        <span class="dc-ico"><svg class="ic"><use href="#i-basket"/></svg></span>
+        <span class="dc-body"><strong>السوق الذكي</strong><small id="darkShopSub">…</small></span>
+        <span class="dc-go"><svg class="ic"><use href="#i-chev"/></svg></span>
+      </button>
+
+      <article class="card score-card" id="scoreCard">
+        <div class="sc-top">
+          <span class="status-chip warn" id="scoreChip"><i class="dot"></i><span id="scoreChipText">محتاج انتباه</span></span>
+          <div class="sc-title"><small>التزامك بالخطة</small><h2>تقدم الشهر</h2></div>
+          <span class="sc-ico"><svg class="ic"><use href="#i-shield"/></svg></span>
+        </div>
+        <div class="sc-mid">
+          <button class="mint-btn" data-go="plan">تفاصيل<svg class="ic sm"><use href="#i-chev"/></svg></button>
+          <div class="sc-num"><span class="pct">٪</span><b id="scoreNum">٠</b></div>
+        </div>
+        <p class="sc-desc" id="scoreDesc">…</p>
+        <div class="bar"><i id="scoreBar" style="width:0%"></i></div>
+      </article>
+
+      <article class="card today-card">
+        <div class="tc-top">
+          <button class="mint-btn" id="spinBtn" type="button"><svg class="ic sm"><use href="#i-refresh"/></svg>اقترح غيرها</button>
+          <div class="tc-title"><small id="todayDate">…</small><h2 id="todayName">…</h2></div>
+          <span class="tc-ico" id="todayEmoji">🍲</span>
+        </div>
+        <div id="todayChips" class="chip-row"></div>
+        <div class="tc-actions">
+          <button class="btn primary" id="todayDone" type="button"><svg class="ic"><use href="#i-check"/></svg><span>تم الطبخ</span></button>
+          <button class="btn ghost" id="todayOpen" type="button">الوصفة</button>
+        </div>
+      </article>
+
+      <div class="section-label"><h3>الأيام الجاية</h3><button class="link-btn" data-go="plan">كل الخطة</button></div>
+      <div id="upcoming" class="upcoming" role="list"></div>
+    </section>
+
+    <!-- ===== الخطة ===== -->
+    <section id="tab-plan" class="screen hidden" aria-labelledby="planTitle">
+      <header class="screen-head">
+        <button id="newPlanBtn" class="btn ghost sm-btn" type="button"><svg class="ic sm"><use href="#i-refresh"/></svg>خطة جديدة</button>
+        <div><small id="planMonth">…</small><h2 id="planTitle">خطة الأكل</h2></div>
+      </header>
+      <div class="stats">
+        <div class="stat"><b id="stDone">٠</b><span>اتطبخت</span></div>
+        <div class="stat"><b id="stLeft">٠</b><span>فاضلة</span></div>
+        <div class="stat"><b id="stServ">٤</b><span>أفراد</span></div>
+      </div>
+      <div class="chips" id="planFilters" role="group" aria-label="تصفية الخطة">
+        <button class="chip selected" data-f="all" aria-pressed="true">الكل</button>
+        <button class="chip" data-f="todo" aria-pressed="false">لسه</button>
+        <button class="chip" data-f="done" aria-pressed="false">اتطبخت</button>
+      </div>
+      <div id="mealPlan" class="meal-list"></div>
+    </section>
+
+    <!-- ===== المشتريات ===== -->
+    <section id="tab-shop" class="screen hidden" aria-labelledby="shopTitle">
+      <header class="screen-head">
+        <div class="head-actions">
+          <button id="shareListBtn" class="round-btn" aria-label="مشاركة القائمة"><svg class="ic"><use href="#i-share"/></svg></button>
+          <button id="copyListBtn" class="round-btn" aria-label="نسخ القائمة"><svg class="ic"><use href="#i-copy"/></svg></button>
+        </div>
+        <div><small id="shopSub">…</small><h2 id="shopTitle">قائمة المشتريات</h2></div>
+      </header>
+      <article class="card shop-sum">
+        <div class="ss-top"><b id="shopPct">٠٪</b><span id="shopCount">…</span></div>
+        <div class="bar green"><i id="shopBar" style="width:0%"></i></div>
+        <div class="ss-foot"><button class="link-btn" id="resetCheckedBtn" type="button">إلغاء علامات الشراء</button><small>الكميات لـ <b id="shopServ">٤</b> أفراد طول الشهر</small></div>
+      </article>
+      <div id="shoppingList"></div>
+    </section>
+
+    <!-- ===== الأكلات ===== -->
+    <section id="tab-recipes" class="screen hidden" aria-labelledby="recTitle">
+      <header class="screen-head">
+        <span class="count-pill" id="recCount">١٠٠</span>
+        <div><small>أفكار على سفرتك</small><h2 id="recTitle">دليل الأكلات</h2></div>
+      </header>
+      <label class="search-box">
+        <svg class="ic"><use href="#i-search"/></svg>
+        <input id="recipeSearch" type="search" placeholder="ابحث عن أكلة أو مكوّن…" autocomplete="off" enterkeyhint="search">
+      </label>
+      <div class="chips scroll" id="recipeFilters" role="group" aria-label="تصفية الأكلات"></div>
+      <div id="recipeGrid" class="recipe-grid"></div>
+    </section>
+
+    <!-- ===== المزيد ===== -->
+    <section id="tab-more" class="screen hidden" aria-labelledby="moreTitle">
+      <header class="screen-head"><div><small>تحكم في التطبيق</small><h2 id="moreTitle">المزيد</h2></div></header>
+
+      <article class="card setting">
+        <div class="set-row">
+          <div class="stepper" role="group" aria-label="عدد الأفراد">
+            <button class="round-btn" id="servPlus" aria-label="زيادة"><svg class="ic"><use href="#i-plus"/></svg></button>
+            <b id="servVal">٤</b>
+            <button class="round-btn" id="servMinus" aria-label="نقصان"><svg class="ic"><use href="#i-minus"/></svg></button>
+          </div>
+          <div class="set-text"><strong>عدد أفراد الأسرة</strong><small>كل المقادير والمشتريات بتتحسب على أساسه</small></div>
+        </div>
+      </article>
+
+      <article class="card setting">
+        <div class="set-text full"><strong>نوع الأكلات المفضّل</strong><small>بيأثر على الخطة الجديدة وزر «تغيير»</small></div>
+        <div class="chips scroll" id="prefChips" role="group" aria-label="نوع الأكلات المفضل"></div>
+      </article>
+
+      <article class="card setting">
+        <div class="set-row">
+          <button class="switch" id="themeSwitch" role="switch" aria-checked="false" aria-label="الوضع الداكن"><i></i></button>
+          <div class="set-text"><strong>الوضع الداكن</strong><small>أريح للعين بالليل</small></div>
+        </div>
+      </article>
+
+      <article class="card setting" id="installCard" hidden>
+        <div class="set-row">
+          <button class="btn primary sm-btn" id="installBtn" type="button"><svg class="ic sm"><use href="#i-download"/></svg>تثبيت</button>
+          <div class="set-text"><strong>ثبّت التطبيق</strong><small>يشتغل زي أي تطبيق وبدون إنترنت</small></div>
+        </div>
+      </article>
+
+      <article class="card setting">
+        <div class="set-row">
+          <button class="btn danger sm-btn" id="resetAllBtn" type="button"><svg class="ic sm"><use href="#i-trash"/></svg>مسح</button>
+          <div class="set-text"><strong>مسح بيانات التطبيق</strong><small>الخطة والعلامات والمفضلة على جهازك</small></div>
+        </div>
+      </article>
+
+      <p class="foot-note">نطبخ إيه؟ · البيانات محفوظة على جهازك فقط<br>الوصفات إرشادات منزلية عامة؛ راجع التسوية والمقادير حسب ذوق أسرتك.<br><span class="copy">© 2026 NotbokhEh — جميع الحقوق محفوظة. يمنع النسخ أو إعادة النشر دون إذن كتابي.</span></p>
+    </section>
+  </div>
+
+  <!-- ===== شريط التنقل ===== -->
+  <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+    <button class="nav-item active" data-go="home" aria-current="page"><span class="ni"><svg class="ic"><use href="#i-home"/></svg></span><em>الرئيسية</em></button>
+    <button class="nav-item" data-go="plan"><span class="ni"><svg class="ic"><use href="#i-calendar"/></svg></span><em>الخطة</em></button>
+    <button class="nav-item" data-go="shop"><span class="ni"><svg class="ic"><use href="#i-cart"/></svg><b class="nav-badge" id="shopBadge" hidden>0</b></span><em>السوق</em></button>
+    <button class="nav-item" data-go="recipes"><span class="ni"><svg class="ic"><use href="#i-book"/></svg></span><em>الأكلات</em></button>
+    <button class="nav-item" data-go="more"><span class="ni"><svg class="ic"><use href="#i-more"/></svg></span><em>المزيد</em></button>
+  </nav>
+
+  <!-- ===== النوافذ ===== -->
+  <div id="sheetBackdrop" class="backdrop hidden">
+    <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+      <div class="grab" aria-hidden="true"></div>
+      <button id="sheetClose" class="round-btn close" aria-label="إغلاق"><svg class="ic"><use href="#i-x"/></svg></button>
+      <div id="sheetBody"></div>
+    </div>
+  </div>
+  <div id="dialogBackdrop" class="backdrop center hidden">
+    <div id="dialog" class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlgTitle" aria-describedby="dlgText" tabindex="-1">
+      <h3 id="dlgTitle"></h3><p id="dlgText"></p>
+      <div class="dlg-actions"><button class="btn ghost" id="dlgCancel" type="button">إلغاء</button><button class="btn primary" id="dlgOk" type="button">تأكيد</button></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:24px;text-align:center">التطبيق يحتاج تفعيل JavaScript.</p></noscript>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
